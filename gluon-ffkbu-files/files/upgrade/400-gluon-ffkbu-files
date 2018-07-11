@@ -1,5 +1,0 @@
-#!/bin/sh
-
-uci set firewall.mesh.input='ACCEPT'
-uci commit firewall
-/etc/init.d/firewall reload
