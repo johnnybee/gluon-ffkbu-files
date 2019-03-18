@@ -7,3 +7,4 @@ uci commit firewall
 #Die Supernodes fest eintragen, da bei Wireguard DNS erst läuft, wenn die Verbindung steht.
 echo "163.172.107.146 bonn2.kbu.freifunk.net" >> /etc/hosts
 echo "195.154.84.24   bonn3.kbu.freifunk.net" >> /etc/hosts
+echo "5.9.102.119     bonn1.kbu.freifunk.net" >> /etc/hosts
