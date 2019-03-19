@@ -5,6 +5,17 @@ uci commit firewall
 /etc/init.d/firewall reload
 
 #Die Supernodes fest eintragen, da bei Wireguard DNS erst läuft, wenn die Verbindung steht.
+if grep -q bonn1 hosts; then
+	echo Ja
+else
+	echo nein
+fi
+
+#Erstmal alle alten Eintraege loeschen in der /etc/hosts
+grep -vwE "(bonn1|bonn2|bonn3)" /etc/hosts > /tmp/hosts.sik
+mv /tmp/hosts.sik /etc/hosts
+echo "5.9.102.119     bonn1.kbu.freifunk.net" >> /etc/hosts
 echo "163.172.107.146 bonn2.kbu.freifunk.net" >> /etc/hosts
 echo "195.154.84.24   bonn3.kbu.freifunk.net" >> /etc/hosts
-echo "5.9.102.119     bonn1.kbu.freifunk.net" >> /etc/hosts
+
+
