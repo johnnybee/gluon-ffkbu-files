@@ -5,11 +5,6 @@ uci commit firewall
 /etc/init.d/firewall reload
 
 #Die Supernodes fest eintragen, da bei Wireguard DNS erst läuft, wenn die Verbindung steht.
-if grep -q bonn1 hosts; then
-	echo Ja
-else
-	echo nein
-fi
 
 #Erstmal alle alten Eintraege loeschen in der /etc/hosts
 grep -vwE "(bonn1|bonn2|bonn3)" /etc/hosts > /tmp/hosts.sik
