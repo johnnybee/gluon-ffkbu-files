@@ -14,3 +14,6 @@ echo "163.172.107.146 bonn2.kbu.freifunk.net" >> /etc/hosts
 echo "195.154.84.24   bonn3.kbu.freifunk.net" >> /etc/hosts
 echo "81.173.204.217  bonn4.kbu.freifunk.net" >> /etc/hosts
 echo "164.68.121.184  bonn5.kbu.freifunk.net" >> /etc/hosts
+
+ /etc/init.d/gluon-radvd disable
+ /etc/init.d/gluon-radvd stop
