@@ -7,13 +7,15 @@ uci commit firewall
 #Die Supernodes fest eintragen, da bei Wireguard DNS erst läuft, wenn die Verbindung steht.
 
 #Erstmal alle alten Eintraege loeschen in der /etc/hosts
-grep -vwE "(bonn1|bonn2|bonn3|bonn4|bonn5)" /etc/hosts > /tmp/hosts.sik
+grep -vwE "(bonn1|bonn2|bonn3|bonn4|bonn5|bonn6|bonn7)" /etc/hosts > /tmp/hosts.sik
 mv /tmp/hosts.sik /etc/hosts
 echo "5.9.102.119     bonn1.kbu.freifunk.net" >> /etc/hosts
 echo "163.172.107.146 bonn2.kbu.freifunk.net" >> /etc/hosts
 echo "195.154.84.24   bonn3.kbu.freifunk.net" >> /etc/hosts
 echo "81.173.204.217  bonn4.kbu.freifunk.net" >> /etc/hosts
 echo "164.68.121.184  bonn5.kbu.freifunk.net" >> /etc/hosts
+echo "157.90.178.17"  bonn6.kbu.freifunk.net" >> /etc/hosts
+echo "157.90.178.15"  bonn7.kbu.freifunk.net" >> /etc/hosts 
 
  /etc/init.d/gluon-radvd disable
  /etc/init.d/gluon-radvd stop
