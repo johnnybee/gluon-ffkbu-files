@@ -6,16 +6,36 @@ uci commit firewall
 
 #Die Supernodes fest eintragen, da bei Wireguard DNS erst läuft, wenn die Verbindung steht.
 
-#Erstmal alle alten Eintraege loeschen in der /etc/hosts
-grep -vwE "(bonn1|bonn2|bonn3|bonn4|bonn5|bonn6|bonn7)" /etc/hosts > /tmp/hosts.sik
-mv /tmp/hosts.sik /etc/hosts
-echo "5.9.102.119     bonn1.kbu.freifunk.net" >> /etc/hosts
-echo "163.172.107.146 bonn2.kbu.freifunk.net" >> /etc/hosts
-echo "195.154.84.24   bonn3.kbu.freifunk.net" >> /etc/hosts
-echo "81.173.204.217  bonn4.kbu.freifunk.net" >> /etc/hosts
-echo "164.68.121.184  bonn5.kbu.freifunk.net" >> /etc/hosts
-echo "157.90.178.17   bonn6.kbu.freifunk.net" >> /etc/hosts
-echo "157.90.178.15   bonn7.kbu.freifunk.net" >> /etc/hosts 
+#Multidomainsupport
+domain=$(uci get gluon.core.domain)
+ case $domain in
+        ffkbu_hood_bonn)
+                #erstmal die alten Eintraege raus....
+                grep -vwE "(bonn1|bonn2|bonn3|bonn4|bonn5|bonn6|bonn7)" /etc/hosts > /tmp/hosts.sik
+                mv /tmp/hosts.sik /etc/hosts
+                echo "5.9.102.119     bonn1.kbu.freifunk.net" >> /etc/hosts
+                echo "163.172.107.146 bonn2.kbu.freifunk.net" >> /etc/hosts
+                echo "195.154.84.24   bonn3.kbu.freifunk.net" >> /etc/hosts
+                echo "81.173.204.217  bonn4.kbu.freifunk.net" >> /etc/hosts
+                echo "164.68.121.184  bonn5.kbu.freifunk.net" >> /etc/hosts
+                echo "157.90.178.17   bonn6.kbu.freifunk.net" >> /etc/hosts
+                echo "157.90.178.15   bonn7.kbu.freifunk.net" >> /etc/hosts
+                ;;
+        ffkbu_hood_umland)
+                #erstmal die alten Eintraege raus....
+                grep -vwE "(umland1|umland2|umland3|umland4|umland5|umland6|umland7)" /etc/hosts > /tmp/hosts.sik
+                mv /tmp/hosts.sik /etc/hosts
+                echo "157.90.178.17   umland1.kbu.freifunk.net" >> /etc/hosts
+                ;;
+        ffkbu_hood_koeln)
+                #erstmal die alten Eintraege raus....
+                grep -vwE "(koeln1|koeln2|koeln3|koeln4|koeln5|koeln6|koeln7)" /etc/hosts > /tmp/hosts.sik
+                mv /tmp/hosts.sik /etc/hosts
+                #echo "157.90.178.17   umland1.kbu.freifunk.net" >> /etc/hosts
+                ;;
+
+  esac
+
 
  /etc/init.d/gluon-radvd disable
  /etc/init.d/gluon-radvd stop
